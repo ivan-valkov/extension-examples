@@ -1,5 +1,6 @@
 import os
 import json
+import prometheus_client
 
 from jupyter_server.base.handlers import APIHandler
 from jupyter_server.utils import url_path_join
@@ -14,7 +15,8 @@ class RouteHandler(APIHandler):
     # Jupyter server
     @tornado.web.authenticated
     def get(self):
-        self.finish(json.dumps({"data": "This is /jlab-ext-example/hello endpoint!"}))
+        self.write(prometheus_client.generate_latest(prometheus_client.REGISTRY))
+        # self.finish(json.dumps({"data": "This is /jlab-ext-example/hello endpoint!"}))
 
     @tornado.web.authenticated
     def post(self):

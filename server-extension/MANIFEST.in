@@ -9,12 +9,6 @@ include ts*.json
 graft jlab_ext_example/labextension
 graft jlab_ext_example/public
 
-# Javascript files
-graft src
-graft style
-prune **/node_modules
-prune lib
-
 # Patterns to exclude from any directory
 global-exclude *~
 global-exclude *.pyc
